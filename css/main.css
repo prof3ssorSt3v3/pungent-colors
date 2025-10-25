@@ -1,78 +1,85 @@
-:root {
-  color-scheme: light dark;
-  /* define which color schemes are available for the page */
+@layer reset, layout;
 
-  --card-w: clamp(120px, 100%, 40ch);
-  --num-cols: 1;
-  --horizontal-align: center;
-  --vertical-align: flex-start;
-
-  --dark: light-dark(#333, #d4d4d4);
-  --light: light-dark(#d4d4d4, #333);
-  /* define different values for the variables based on whether the user prefers light or dark color scheme */
-
-  --radius: 0.5rem;
+@layer reset {
+  /* reset css here */
 }
-* {
-  box-sizing: border-box;
-}
-html,
-body {
-  font-family: 'Open Sans', sans-serif;
-  min-height: 100vh;
-}
-.cards {
-  display: grid;
-  grid-template-columns: repeat(var(--num-cols), 1fr);
-  gap: 1rem;
-  justify-content: var(--horizontal-align);
-  align-items: var(--vertical-align);
-}
-.card {
-  border: 1px solid var(--dark);
-  border-radius: var(--radius);
-  padding: 1rem;
-  width: var(--card-w);
-  background-color: var(--light);
-}
-.card__content {
-  display: -webkit-box;
-  line-clamp: 4;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  overflow: hidden;
-}
-.btn {
-  background-image: linear-gradient(var(--dark), var(--dark));
-  color: var(--light);
-  padding: 0.2rem 1rem;
-  text-decoration: none;
-  border-radius: var(--radius);
-}
-.card:hover .btn {
-  filter: brightness(1.6);
-}
-.card:hover {
-  filter: brightness(0.8);
-}
-@media (width > 40em) {
+@layer layout {
   :root {
-    --num-cols: 2;
-  }
-}
-@media (width > 60em) {
-  :root {
-    --num-cols: 4;
-  }
-}
+    color-scheme: light dark;
+    /* define which color schemes are available for the page */
 
-@media (prefers-color-scheme: dark) {
-  .card__title {
-    color: hsl(40, 70%, 70%);
+    --card-w: clamp(120px, 100%, 40ch);
+    --num-cols: 1;
+    --horizontal-align: center;
+    --vertical-align: flex-start;
+
+    --dark: light-dark(#333, #d4d4d4);
+    --light: light-dark(#d4d4d4, #333);
+    /* define different values for the variables based on whether the user prefers light or dark color scheme */
+
+    --radius: 0.5rem;
   }
-}
-@media (prefers-color-scheme: light) {
-  .card__title {
-    color: hsl(330, 80%, 20%);
+  * {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    font-family: 'Open Sans', sans-serif;
+    min-height: 100vh;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(var(--num-cols), 1fr);
+    gap: 1rem;
+    justify-content: var(--horizontal-align);
+    align-items: var(--vertical-align);
+  }
+  .card {
+    border: 1px solid var(--dark);
+    border-radius: var(--radius);
+    padding: 1rem;
+    width: var(--card-w);
+    background-color: var(--light);
+  }
+  .card__content {
+    display: -webkit-box;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+  }
+  .btn {
+    background-image: linear-gradient(var(--dark), var(--dark));
+    color: var(--light);
+    padding: 0.2rem 1rem;
+    text-decoration: none;
+    border-radius: var(--radius);
+  }
+  .card:hover .btn {
+    filter: brightness(1.6);
+  }
+  .card:hover {
+    filter: brightness(0.8);
+  }
+  @media (width > 40em) {
+    :root {
+      --num-cols: 2;
+    }
+  }
+  @media (width > 60em) {
+    :root {
+      --num-cols: 4;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .card__title {
+      color: hsl(40, 70%, 70%);
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    .card__title {
+      color: hsl(330, 80%, 20%);
+    }
   }
 }
