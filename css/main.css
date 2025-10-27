@@ -1,8 +1,5 @@
 @layer reset, layout;
 
-@layer reset {
-  /* reset css here */
-}
 @layer layout {
   :root {
     color-scheme: light dark;
@@ -17,10 +14,13 @@
     --light: light-dark(#d4d4d4, #333);
     /* define different values for the variables based on whether the user prefers light or dark color scheme */
 
+    --danger: light-dark(maroon, transparent);
+
     --radius: 0.5rem;
   }
   * {
     box-sizing: border-box;
+    /* outline: 1px solid var(--danger); */
   }
   html,
   body {
@@ -42,14 +42,25 @@
     background-color: var(--light);
   }
   .card__content {
+    /* multi-line ellipsis overflow for text 
+    Vendor prefixes
+    -webkit
+    -ms
+    -moz
+    -o
+    */
     display: -webkit-box;
     line-clamp: 4;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
     overflow: hidden;
+
+    font-size: 2rem;
+    line-height: 2;
   }
   .btn {
-    background-image: linear-gradient(var(--dark), var(--dark));
+    background-image: linear-gradient(var(--dark), var(--dark)), url(https://picsum.photos/600/400);
+    /* linear-gradient treated like an image */
     color: var(--light);
     padding: 0.2rem 1rem;
     text-decoration: none;
@@ -57,9 +68,11 @@
   }
   .card:hover .btn {
     filter: brightness(1.6);
+    /* filter method to modify backgrounds */
   }
   .card:hover {
     filter: brightness(0.8);
+    /* filter method to modify backgrounds */
   }
   @media (width > 40em) {
     :root {
@@ -72,6 +85,30 @@
     }
   }
 
+  /* pop overs https://developer.mozilla.org/en-US/docs/Web/API/Popover_API */
+  ::backdrop {
+    /* pseudo-element for the screen behind the popover */
+    /* background-color: red; */
+    /* typically used for a modal dialog */
+  }
+  :popover-open {
+    /* the popover element itself */
+    position: absolute;
+    position-anchor: --enrico;
+    top: anchor(bottom);
+    left: anchor(right);
+    margin: 0;
+    margin-left: -2rem;
+    margin-top: 1rem;
+  }
+  .card:nth-of-type(1) {
+    anchor-name: --enrico;
+  }
+  .card:nth-of-type(2) {
+    anchor-name: --gabriel;
+  }
+
+  /* media queries for light and dark mode */
   @media (prefers-color-scheme: dark) {
     .card__title {
       color: hsl(40, 70%, 70%);
@@ -81,5 +118,20 @@
     .card__title {
       color: hsl(330, 80%, 20%);
     }
+  }
+}
+@layer reset {
+  /* reset css here */
+}
+/* media queries for non width and height */
+
+@media (orientation: landscape) {
+  * {
+    outline: 1px solid var(--danger); /* maroon or transparent light-dark() */
+  }
+}
+@media (orientation: portrait) {
+  * {
+    outline: 1px solid lime;
   }
 }

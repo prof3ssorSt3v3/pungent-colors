@@ -7,12 +7,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/main.css" />
+
+    <script type="module" src="js/main.js"></script>
   </head>
   <body>
-    <header>
+    <header title="This is the header">
       <h1>CSS Variable Review</h1>
     </header>
+
+    <div id="SomeContext" popover>This will be a popover.</div>
+
     <main>
       <section class="cards">
         <div class="card">
@@ -22,7 +28,7 @@
             tempora nisi dignissimos dolor voluptates cumque. Consectetur labore amet impedit quasi enim id harum pariatur voluptatem hic dolor, alias molestiae quae recusandae optio cupiditate, in
             vitae repellendus?
           </p>
-          <p class="card__action"><a href="#" class="btn">Learn More</a></p>
+          <p class="card__action"><button popovertarget="SomeContext" class="btn">Learn More</button></p>
         </div>
         <div class="card">
           <h2 class="card__title">Card Title</h2>
